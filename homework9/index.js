@@ -1,6 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
+const util1 = require('./utils/generateMarkdown.js');
 
 // TODO: Create an array of questions for user input
 const questions = ['what is the title of md?'];
@@ -19,10 +20,10 @@ function init() {
             {
             type: 'input',
             message: questions[0],
-            name: 'title_of_md',
+            name: 'title',
             },
         ])
-        .then((response) => console.log(response.title_of_md)
+        .then((response) => console.log(util1.generateMarkdown(response))
         );
 }
 
