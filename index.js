@@ -4,13 +4,17 @@ const fs = require('fs');
 const util1 = require('./utils/generateMarkdown.js');
 
 // TODO: Create an array of questions for user input
-const questions = ['what is the title of md?'];
+const questions = ['what is the title of md?', 
+'installation instructions?', 
+'usage information?', 
+'contribution guidelines', 
+'test instructions', 
+'description'];
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, (err)? 
         console.log(err) : console.log('success'));
-    
 }
 
 // TODO: Create a function to initialize app
@@ -22,6 +26,13 @@ function init() {
             message: questions[0],
             name: 'title',
             },
+            {
+                type: 'list',
+                message: 'Please select the license below',
+                name: 'license',
+                choices: ['MIT'],
+            },
+            
         ])
         .then((response) => console.log(util1.generateMarkdown(response))
         );
