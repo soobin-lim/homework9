@@ -9,11 +9,13 @@ const questions = ['what is the title of md?',
 'usage information?', 
 'contribution guidelines', 
 'test instructions', 
-'description'];
+'description',
+'github user name?'];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {
-    fs.writeFile(fileName, data, (err)? 
+function writeToFile(data) {
+
+    fs.writeFile('README.md', data, (err) => err ? 
         console.log(err) : console.log('success'));
 }
 
@@ -22,9 +24,34 @@ function init() {
     inquirer
         .prompt([
             {
-            type: 'input',
-            message: questions[0],
-            name: 'title',
+                type: 'input',
+                message: questions[0],
+                name: 'title',
+            },
+            {
+                type: 'input',
+                message: questions[1],
+                name: 'install_instruction',
+            },
+            {
+                type: 'input',
+                message: questions[2],
+                name: 'usage_information',
+            },
+            {
+                type: 'input',
+                message: questions[3],
+                name: 'contribution_guidelines',
+            },
+            {
+                type: 'input',
+                message: questions[4],
+                name: 'test_instructions',
+            },
+            {
+                type: 'input',
+                message: questions[5],
+                name: 'description',
             },
             {
                 type: 'list',
@@ -32,9 +59,13 @@ function init() {
                 name: 'license',
                 choices: ['MIT'],
             },
-            
+            {
+                type: 'input',
+                message: questions[6],
+                name: 'username',
+            },
         ])
-        .then((response) => console.log(util1.generateMarkdown(response))
+        .then((response) => writeToFile(util1.generateMarkdown(response))
         );
 }
 

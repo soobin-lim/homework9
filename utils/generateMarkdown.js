@@ -39,16 +39,25 @@ function renderLicenseSection(license) {
 }
 
 function githubProfileURL(username){
-  return `# Git hub profiel\n\nhttps://github.com/${username}`;
+  return `# Git hub profile\n\nhttps://github.com/${username}`;
 }
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  const result = `# ${data.title}\n
-  ${githubProfileURL()}\n
-  ${renderLicenseBadge()}\n
-  ${renderLicenseLink()}\n
-  `
+const result = `# ${data.title}
+\n# install_instruction\n
+${data.install_instruction}
+\n# Usage information\n
+${data.usage_information}
+\n# Contribution guidelines\n
+${data.contribution_guidelines}
+\n# Test instructions\n
+${data.test_instructions}
+\n# Description\n
+${data.description}
+${githubProfileURL(data.username)}\n
+${renderLicenseBadge()}\n
+${renderLicenseLink()}\n`
   return result;
 }
 
